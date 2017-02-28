@@ -6,7 +6,6 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothDevice;
@@ -38,8 +37,12 @@ import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.media.MediaBrowserCompat;
+import android.support.v4.media.MediaBrowserServiceCompat;
+import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
@@ -74,13 +77,17 @@ import com.simplecity.amp_library.http.HttpServer;
 import com.simplecity.amp_library.model.Album;
 import com.simplecity.amp_library.model.Song;
 import com.simplecity.amp_library.services.EqualizerService;
+import com.simplecity.amp_library.services.MusicProvider;
 import com.simplecity.amp_library.ui.widgets.WidgetProviderExtraLarge;
 import com.simplecity.amp_library.ui.widgets.WidgetProviderLarge;
 import com.simplecity.amp_library.ui.widgets.WidgetProviderMedium;
 import com.simplecity.amp_library.ui.widgets.WidgetProviderSmall;
 import com.simplecity.amp_library.utils.DataManager;
 import com.simplecity.amp_library.utils.DrawableUtils;
+import com.simplecity.amp_library.utils.LogHelper;
 import com.simplecity.amp_library.utils.MediaButtonIntentReceiver;
+import com.simplecity.amp_library.utils.MediaIDHelper;
+import com.simplecity.amp_library.utils.PackageValidator;
 import com.simplecity.amp_library.utils.PlaylistUtils;
 import com.simplecity.amp_library.utils.SettingsManager;
 import com.simplecity.amp_library.utils.ShuttleUtils;
@@ -100,7 +107,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 @SuppressLint("InlinedApi")
-public class MusicService extends Service {
+public class MusicService extends MediaBrowserServiceCompat {
 
     private static final String TAG = "MusicService";
 
@@ -321,6 +328,10 @@ public class MusicService extends Service {
 
     private boolean queueReloading;
     private boolean playOnQueueLoad;
+
+    //Android Auto
+    private MusicProvider musicProvider;
+    private PackageValidator packageValidator;
 
     void updatePlaybackLocation(int location) {
 
@@ -560,6 +571,8 @@ public class MusicService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        packageValidator = new PackageValidator(this);
+
         servicePrefs = getSharedPreferences("Service", 0);
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -650,6 +663,7 @@ public class MusicService extends Service {
 
     private void setupMediaSession() {
         mSession = new MediaSessionCompat(this, "Shuttle", mMediaButtonReceiverComponent, null);
+        setSessionToken(mSession.getSessionToken());
         mSession.setCallback(new MediaSessionCompat.Callback() {
             @Override
             public void onPause() {
@@ -665,6 +679,12 @@ public class MusicService extends Service {
             @Override
             public void onSeekTo(long pos) {
                 seekTo(pos);
+            }
+
+            @Override
+            public void onPlayFromMediaId(String mediaId, Bundle extras) {
+                LogHelper.d(TAG, "playFromMediaId mediaId:", mediaId, "  extras=", extras);
+                //Todo
             }
 
             @Override
@@ -1208,10 +1228,58 @@ public class MusicService extends Service {
 
     @Override
     public IBinder onBind(final Intent intent) {
+
         cancelShutdown();
         mServiceInUse = true;
+
+        //For Android auto, need to call super, or onGetRoot won't be called.
+        if (intent != null && "android.media.browse.MediaBrowserService".equals(intent.getAction())) {
+            return super.onBind(intent);
+        }
+
         return mBinder;
     }
+
+    @Nullable
+    @Override
+    public BrowserRoot onGetRoot(@NonNull String clientPackageName, int clientUid, @Nullable Bundle rootHints) {
+        // Verify that the specified package is allowed to access your
+        // content! You'll need to write your own logic to do this.
+//        if (!packageValidator.isCallerAllowed(this, clientPackageName, clientUid)) {
+//            // If the request comes from an untrusted package, return null.
+//            // No further calls will be made to other media browsing methods.
+//
+//            return null;
+//        }
+
+        return new BrowserRoot(MediaIDHelper.MEDIA_ID_ROOT, null);
+    }
+
+    @Override
+    public void onLoadChildren(@NonNull String parentMediaId, @NonNull Result<List<MediaBrowserCompat.MediaItem>> result) {
+        // Assume for example that the music catalog is already loaded/cached.
+
+        List<MediaBrowserCompat.MediaItem> mediaItems = new ArrayList<>();
+
+        // Check if this is the root menu:
+        if (MediaIDHelper.MEDIA_ID_ROOT.equals(parentMediaId)) {
+
+            // build the MediaItem objects for the top level,
+            // and put them in the mediaItems list
+
+            MediaDescriptionCompat description = new MediaDescriptionCompat.Builder()
+                    .setMediaId("ID_ONE")
+                    .setTitle("Title")
+                    .setSubtitle("Subtitle")
+                    .build();
+
+            mediaItems.add(new MediaBrowserCompat.MediaItem(description,
+                    MediaBrowserCompat.MediaItem.FLAG_BROWSABLE));
+        }
+
+        result.sendResult(mediaItems);
+    }
+
 
     @Override
     public void onRebind(Intent intent) {
