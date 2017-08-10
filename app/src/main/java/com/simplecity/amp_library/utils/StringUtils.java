@@ -3,6 +3,7 @@ package com.simplecity.amp_library.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.simplecity.amp_library.R;
@@ -21,7 +22,7 @@ public class StringUtils {
 
     private static Formatter sFormatter = new Formatter(sFormatBuilder, Locale.getDefault());
 
-    private static Pattern pattern = Pattern.compile("^(?i)\\s*(?:the |an |a )|(?:, the|, an|, a)\\s*$|[\\[\\]\\(\\)!\\?\\.,']");
+    private static Pattern pattern = Pattern.compile("^(?i)\\s*(?:the |an |a )|(?:, the|, an|, a)\\s*$|[\\[\\]()!?.,']");
 
     private StringUtils() {
 
@@ -129,8 +130,7 @@ public class StringUtils {
             if (numSubfiles == 1) {
                 string.append(context.getString(R.string.onesong));
             } else {
-                final String f = r.getQuantityText(R.plurals.Nsongs, numSubfiles)
-                        .toString();
+                final String f = r.getQuantityText(R.plurals.Nsongs, numSubfiles).toString();
                 sFormatBuilder.setLength(0);
                 sFormatter.format(f, numSubfiles);
                 string.append(sFormatBuilder);
@@ -169,6 +169,35 @@ public class StringUtils {
             stringBuilder.append(sFormatBuilder);
         }
         return stringBuilder.toString();
+    }
+
+    public static String makeAlbumsLabel(Context context, int numAlbums) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        String formatString = context.getResources().getQuantityText(R.plurals.Nalbums, numAlbums).toString();
+        sFormatBuilder.setLength(0);
+        sFormatter.format(formatString, numAlbums);
+        stringBuilder.append(sFormatBuilder);
+
+        return stringBuilder.toString();
+    }
+
+    public static String makeSongsLabel(Context context, int numSongs) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        String formatString = context.getResources().getQuantityText(R.plurals.Nsongs, numSongs).toString();
+        sFormatBuilder.setLength(0);
+        sFormatter.format(formatString, numSongs);
+        stringBuilder.append(sFormatBuilder);
+
+        return stringBuilder.toString();
+    }
+
+    public static String makeYearLabel(Context context, int year) {
+
+        if (year <= 0) {
+            return context.getResources().getString(R.string.unknown_year);
+        }
+
+        return String.format("%s", year);
     }
 
     /**
@@ -213,7 +242,11 @@ public class StringUtils {
      * Note: This method splits the {@param first} string at whitespaces, and returns the best Jaro-Winkler
      * score between {@param second} and the 'split' strings.
      */
-    public static double getAdjustedJaroWinklerSimilarity(String first, String second) {
+    public static double getAdjustedJaroWinklerSimilarity(@Nullable String first, @Nullable String second) {
+
+        if (TextUtils.isEmpty(first) || TextUtils.isEmpty(second)) {
+            return 0;
+        }
 
         String[] split = first.split("\\s");
         if (split.length > 1) {
@@ -244,15 +277,10 @@ public class StringUtils {
      * @param first  the first String, must not be null
      * @param second the second String, must not be null
      * @return result similarity
-     * @throws IllegalArgumentException if either String input {@code null}
      */
-    public static double getJaroWinklerSimilarity(String first, String second) {
+    public static double getJaroWinklerSimilarity(@NonNull String first, @NonNull String second) {
 
         final double DEFAULT_SCALING_FACTOR = 0.1;
-
-        if (first == null || second == null) {
-            throw new IllegalArgumentException("Strings must not be null");
-        }
 
         first = first.toLowerCase();
         second = second.toLowerCase();
