@@ -21,21 +21,21 @@
     <!-- Toast after turning repeat off -->
     <string name="repeat_off_notif">Repeat is off.</string>
     <!-- Toast after turning single repeat on -->
-    <string name="repeat_current_notif">Repeating current song.</string>
+    <string name="repeat_current_notif">Repeating current GMusicSong.</string>
     <!-- Toast after turning repeat all on -->
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Set as ringtone</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <!-- Toast if setting ringtone fails -->
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <!-- Toast after selecting an empty playlist -->
     <string name="emptyplaylist">Selected playlist is empty.</string>
     <!-- -->
     <!-- Transient popup message shown after deleting a playlist -->
     <!-- Transient popup message shown after renaming a playlist -->
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <!-- ## Dialogs ## -->
     <!-- Restart now button -->
     <string name="restart_button">Restart now</string>
@@ -44,9 +44,9 @@
     <!-- Displayed in the color picker dialog, to choose a 'custom' color -->
     <!-- Displays when sharing a file fails -->
     <!-- Displays when you click 'share' -->
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <!-- Option to share audio file -->
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <!-- Displayed when an M3U playlist is being saved-->
     <!-- Displayed when whitelisting a folder, as the app gathers the songs-->
     <string name="gathering_songs">Gathering songs...</string>
@@ -64,7 +64,7 @@
     <!-- Delete confirmation dialog message when deleting artists -->
     <!-- Delete confirmation dialog when deleting an entire album -->
     <!-- Delete confirmation dialog message when deleting albums -->
-    <!-- Delete confirmation dialog when deleting a single song -->
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
     <!-- Delete confirmation dialog message title when deleting songs -->
     <!-- Toast shown when songs are successfully deleted -->
     <!-- Toast shown when failing to delete songs-->
@@ -260,7 +260,7 @@
     <!-- ## Sort options ## -->
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <!-- Sleep timer "Stop" -->
     <!-- Sleep timer stop message "Stop sleep timer?" -->
     <!-- Toast when sleep timer is set -->
@@ -285,7 +285,7 @@
     <!-- Button name when saving a playlist -->
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <!-- Used in artists list view, indicates how many albums exist for a given artist. -->
     <!--## Miscellaneous ##-->

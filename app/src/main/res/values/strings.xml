@@ -29,20 +29,20 @@
     <!-- Toast after turning repeat off -->
     <string name="repeat_off_notif">Repeat off</string>
     <!-- Toast after turning single repeat on -->
-    <string name="repeat_current_notif">Repeat current song</string>
+    <string name="repeat_current_notif">Repeat current GMusicSong</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Repeat all songs</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Set as ringtone</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" set as phone ringtone.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Couldn\'t set ringtone</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
-        <!-- message shown when one song was added -->
-        <item quantity="one">1 song added to playlist.</item>
-        <!-- message shown when zero or more than one song was added -->
+        <!-- message shown when one GMusicSong was added -->
+        <item quantity="one">1 GMusicSong added to playlist.</item>
+        <!-- message shown when zero or more than one GMusicSong was added -->
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> songs added to playlist.</item>
     </plurals>
     <!-- Toast after selecting an empty playlist -->
@@ -54,18 +54,18 @@
     <string name="playlist_deleted_message">Playlist deleted.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Playlist renamed.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
-        <!-- message shown when one song was added -->
-        <item quantity="one">1 song added to queue.</item>
-        <!-- message shown when zero or more than one song was added -->
+        <!-- message shown when one GMusicSong was added -->
+        <item quantity="one">1 GMusicSong added to queue.</item>
+        <!-- message shown when zero or more than one GMusicSong was added -->
         <item quantity="other">
             <xliff:g example="27" id="number">%d</xliff:g>
             songs added to queue.
         </item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> added to favorites.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> removed from favorites.</string>
 
@@ -79,12 +79,12 @@
     <string name="share_failed">Sorry, this file couldn\'t be shared</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">What do you want to share?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Now playing info</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">The audio file</string>
-    <!-- Displays when you need to choose which app to share the song with -->
-    <string name="share_via">Share song via:</string>
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
+    <string name="share_via">Share GMusicSong via:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Saving playlist</string>
     <!-- Displayed when whitelisting a folder, as the app gathers the songs-->
@@ -133,10 +133,10 @@
     <string name="get_pro_button_amazon">Amazon</string>
 
     <string name="delete_album_desc_multiple">All songs from the following albums:<xliff:g id="album">%s</xliff:g>will be permanently deleted.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g> will be permanently deleted.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g> will be permanently deleted.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">The following songs:<xliff:g id="song">%s</xliff:g>will be permanently deleted.</string>
+    <string name="delete_song_desc_multiple">The following songs:<xliff:g id="GMusicSong">%s</xliff:g>will be permanently deleted.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> songs deleted.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -155,7 +155,7 @@
     <string name="dialog_message_set_ringtone">Shuttle requires permission to \'write settings\' in order to set your ringtone.\n\nAfter granting permission, try setting your ringtone again.</string>
 
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> already exists in this playlist. Add it anyway?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> already exists in this playlist. Add it anyway?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Apply to all (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -401,7 +401,7 @@
     <string name="pref_summary_rate">If you like Shuttle, please consider leaving a review.</string>
 
     <string name="pref_title_headset_beep">Beep on Skip</string>
-    <string name="pref_summary_headset_beep">Beep when skipping song via headset controls</string>
+    <string name="pref_summary_headset_beep">Beep when skipping GMusicSong via headset controls</string>
 
     <!-- Settings title for ignore playlist duplicates -->
     <string name="pref_title_ignore_duplicates">Ignore playlist duplicates</string>
@@ -428,7 +428,7 @@
     <!-- -->
     <string name="blacklist_title">Blacklist</string>
     <!-- -->
-    <string name="blacklist_description">Songs can be added to the blacklist by pressing the overflow (3 vertical dots) from a particular song, and selecting \'blacklist\'.</string>
+    <string name="blacklist_description">Songs can be added to the blacklist by pressing the overflow (3 vertical dots) from a particular GMusicSong, and selecting \'blacklist\'.</string>
     <!-- -->
     <string name="whitelist_description">Songs can be added to the whitelist by pressing the settings button from the folder-browser, selecting \'whitelist\', then choosing the folders you wish to include in the whitelist.</string>
 
@@ -551,7 +551,7 @@
     <!-- -->
     <string name="empty_genres">No genres detected.</string>
     <!-- -->
-    <string name="empty_playlist">This playlist is empty. Long press on an artist, album or song and press \'add to playlist\', or the + icon to get started.</string>
+    <string name="empty_playlist">This playlist is empty. Long press on an artist, album or GMusicSong and press \'add to playlist\', or the + icon to get started.</string>
     <!-- -->
     <string name="empty_songlist">No songs detected. Copy some songs over to your device.</string>
     <!-- -->
@@ -588,8 +588,8 @@
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">Sleep timer</string>
-    <!--Sleep timer "Play last song to end" -->
-    <string name="sleep_timer_play_to_end">Play last song to end</string>
+    <!--Sleep timer "Play last GMusicSong to end" -->
+    <string name="sleep_timer_play_to_end">Play last GMusicSong to end</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">Stop</string>
     <!-- Sleep timer stop message "Stop sleep timer?" -->
@@ -639,8 +639,8 @@
     <string name="create_playlist_overwrite_text">Overwrite</string>
 
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
-    <string name="onesong">1 song</string>
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
+    <string name="onesong">1 GMusicSong</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">
         <item quantity="other"><xliff:g id="count">%d</xliff:g> songs</item>
@@ -661,7 +661,7 @@
     <!-- Action bar button text for saving a selected items to whitelist -->
     <string name="save_whitelist">Save Whitelist</string>
     <!-- DashClock Extension Description -->
-    <string name="extension_description">Displays song information</string>
+    <string name="extension_description">Displays GMusicSong information</string>
     <!-- Week Selector title -->
     <string name="week_selector">Week Selector</string>
     <!-- Displayed under the 'Most Played' section of the 'suggested' tab.. Artist, Album, Song -->

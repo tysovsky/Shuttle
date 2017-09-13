@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Geçerli şarkı tekrarlanıyor</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Tüm şarkılar tekrarlanıyor</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Zil sesi olarak ayarla</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" sesini zil sesi olarak ayarla.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Zil sesi ayarlanamadı</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="one">Şarkı listesine 1 şarkı eklendi.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> şarkılar şarkı listesine ekledi.</item>
@@ -49,13 +49,13 @@
     <string name="playlist_deleted_message">Şarkı listesi silindi.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Liste yeniden adlandırıldı.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="one">1 şarkı sıraya eklendi.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> şarkı sıraya eklendi.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> favorilere eklendi.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> favorilerden kaldırıldı.</string>
     <!-- ## Dialogs ## -->
@@ -68,11 +68,11 @@
     <string name="share_failed">Maalesef, bu dosya paylaşılamaz</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Ne paylaşmak istiyorsun?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Şimdi çalınıyor bilgisi</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">Ses dosyası</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Şarkıyı paylaş:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Şarkı listesi kaydediliyor</string>
@@ -119,10 +119,10 @@
     <string name="get_pro_button_play_store">Play Store</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Aşağıdaki albümlerin tüm şarkıları:<xliff:g id="album">%s</xliff:g> kalıcı olarak silinecek.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g> kalıcı olarak silinecek.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g> kalıcı olarak silinecek.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">Aşağıdaki şarkılar:<xliff:g id="song">%s</xliff:g>kalıcı olarak silinecek.</string>
+    <string name="delete_song_desc_multiple">Aşağıdaki şarkılar:<xliff:g id="GMusicSong">%s</xliff:g>kalıcı olarak silinecek.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> şarkılar silindi.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -140,7 +140,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle, zil sesini ayarlamak için \'ayarları yazma\' izni gerektirir.\n\nİzin verdikten sonra zil sesini tekrar ayarlamayı deneyin.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> zaten şarkı listesinde var. Yine de eklensin mi?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> zaten şarkı listesinde var. Yine de eklensin mi?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Tümüne uygula (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -538,7 +538,7 @@ dosyalar</item>
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">Uyku zamanlayıcı</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Sonlandırmak için son şarkıyı çal</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">Durdur</string>
@@ -583,7 +583,7 @@ dosyalar</item>
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Üzerine yaz</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1 şarkı</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

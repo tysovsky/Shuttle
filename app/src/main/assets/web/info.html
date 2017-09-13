@@ -19,7 +19,7 @@
 	<li>Actually don't require app restart when changing tab items</li>
 	<li>When turning off 'use color from artwork', previosuly selected theme is restored</li>
 	<li>Fixed crash when rotating device</li>
-	<li>Fixed crash when sharing song (sharing may still fail, but app won't crash)</li>
+	<li>Fixed crash when sharing GMusicSong (sharing may still fail, but app won't crash)</li>
 	<li>Fixed crash when starting app from headset button</li>
 </ul>
 <h4>2.0.0-beta9</h4>
@@ -166,7 +166,7 @@
 </ul>
 <h4>1.6.4</h4>
 <ul>
-	<li>Fixed a bug where choosing to play a song from the folder browser ended up playing the whole library (and related issues)</li>
+	<li>Fixed a bug where choosing to play a GMusicSong from the folder browser ended up playing the whole library (and related issues)</li>
 	<li>Fixed a crash when editing tags/setting ringtone from folder browser</li>
 	<li>Fixed a crash when attempting to view/edit tags for certain file types</li>
 	<li>Fixed a crash when sorting by 'album name', then attempting to view the contents of an album</li>
@@ -175,7 +175,7 @@
 <ul>
 	<li>Fixed a bug where Podcasts, music stored in the /podcast/ directory and the Podcast playlist didn't show up</li>
 	<li>Added 'fuzzy search' algorithm. Search results are now sorted by how closely they match the query. Thanks Andrew Neal for his help with that.</li>
-	<li>Added option to share songs from more places (via song context menu)</li>
+	<li>Added option to share songs from more places (via GMusicSong context menu)</li>
 	<li>Fixed an issue where 'most played' wasn't sorted by 'default'</li>
 	<li>Fixed an issue with search - incorrect results showing up</li>
 	<li>Show track number in detail view (when viewing albums & sorting by default/track number</li>
@@ -188,7 +188,7 @@
 <ul>
 	<li>Reinstated playlist sorting</li>
 	<li>Fixed tag editing issue for files on SD card</li>
-	<li>Fixed an issue where the queue didn't automatically scroll to the current song</li>
+	<li>Fixed an issue where the queue didn't automatically scroll to the current GMusicSong</li>
 	<li>Fixed order of playlists in drawer/playlist screen</li>
 	<li>Added fast-scrolling to queue</li>
 	<li>Fixed a crash when reloading the queue</li>
@@ -232,7 +232,7 @@
 <h4>Genres:</h4>
 <ul>
 	<li>Empty genres no longer show up in the genre list</li>
-	<li>Show album &amp; song count for genres</li>
+	<li>Show album &amp; GMusicSong count for genres</li>
 	<li>Remove empty genres on launch</li>
 </ul>
 <h4>Artwork:</h4>
@@ -262,7 +262,7 @@
 <h4>Fixes:</h4>
 <ul>
 	<li>Fixed ChromeCast track skipping issue</li>
-	<li>Fixed an issue where 'shuffle all' resulted in the same song being played first each time</li>
+	<li>Fixed an issue where 'shuffle all' resulted in the same GMusicSong being played first each time</li>
 	<li>Fixed multi-selection highlight issue for album-artists</li>
 	<li>Too many crash fixes to detail here.</li>
 	<li>Fixed an issue where the color palette didn't change for upgraded users</li>
@@ -401,7 +401,7 @@
 	<li>Fixed issue where tapping playlist items wouldn't play them</li>
 	<li>Fixed off-by-one when using multi-selector for playlists</li>
 	<li>Fixed some delay issues when hitting play/pause</li>
-	<li>Fixed issue where tapping a song would play a song several places above</li>
+	<li>Fixed issue where tapping a GMusicSong would play a GMusicSong several places above</li>
 	<li>Fixed issue where 'now playing' artwork was blank when launching app</li>
 	<li>Fixed issue where playing indicator didn't update when track changes</li>
 	<li>Fixed a couple of cursor leaks</li>
@@ -468,10 +468,10 @@
 	<li>Huge image caching rewrite.</li>
 	<li>Added option to view lists using palette, cards, material style grid, or lists (see 'view as' option).</li>
 	<li>Massively reduced memory usage.</li>
-	<li>Added song info dialog.</li>
+	<li>Added GMusicSong info dialog.</li>
 	<li>Added option to circumvent MediaStore when retrieving artwork from tags.</li>
 	<li>New queue UI!</li>
-	<li>Added option to blacklist &amp; view song info in queue.</li>
+	<li>Added option to blacklist &amp; view GMusicSong info in queue.</li>
 	<li>Fixed suggested layout alignment.</li>
 	<li>Updated theme colours to match Material design spec.</li>
 	<li>Fixed issue where system equalizer would not launch on some devices.</li>
@@ -543,9 +543,9 @@
 <ul>
 	<li>Fixed settings background color issues</li>
 	<li>Fixed issue where closing app from search would cause music to stop playing</li>
-	<li>Playing a song from search now adds all other songs from the list, and turns shuffle on automatically</li>
-	<li>Playing an individual song from voice search now adds all other songs by the same artist to the queue (and turns shuffle on)</li>
-	<li>Playing any item (artist/album/song) from voice-search now turns shuffle on</li>
+	<li>Playing a GMusicSong from search now adds all other songs from the list, and turns shuffle on automatically</li>
+	<li>Playing an individual GMusicSong from voice search now adds all other songs by the same artist to the queue (and turns shuffle on)</li>
+	<li>Playing any item (artist/album/GMusicSong) from voice-search now turns shuffle on</li>
 	<li>Fixed a bunch of force close bugs</li>
 	<li>Fixed issue where widget icon colors changed depending on the base theme</li>
 	<li>Added option to clear favorites &amp; most-played</li>
@@ -590,7 +590,7 @@
 </ul>
 <h4>1.4.3</h4>
 <ul>
-	<li>Fixed tag editing issue. Batch-editing artists or albums now works again, instead of just changing the tags of one song</li>
+	<li>Fixed tag editing issue. Batch-editing artists or albums now works again, instead of just changing the tags of one GMusicSong</li>
 	<li>Fixed crash caused by 'Gmail style' placeholders</li>
 	<li>Removed 'android icon' from empty Gmail-style placeholders when the text is unknown</li>
 	<li>Updated translations</li>
@@ -685,7 +685,7 @@
 </ul>
 <h4>1.3.15</h4>
 <ul>
-	<li>Fixed a bug where the notification wouldn't show as 'paused' after pausing a song</li>
+	<li>Fixed a bug where the notification wouldn't show as 'paused' after pausing a GMusicSong</li>
 	<li>Several force close fixes</li>
 </ul>
 <h4>1.3.14</h4>
@@ -731,7 +731,7 @@
 <ul>
 	<li>Lots of force close fixes</li>
 	<li>Lists remember their positions once again</li>
-	<li>Fixed issue where you had to press the previous button twice to go back a song when on shuffle</li>
+	<li>Fixed issue where you had to press the previous button twice to go back a GMusicSong when on shuffle</li>
 	<li>Fixed issue with swiping album art to the previous track</li>
 	<li>The seekbar is a little smoother</li>
 	<li>Fixed issue with album art 'flickering' when resuming the app</li>
@@ -774,13 +774,13 @@
 	<li>Favorite icon re-enabled</li>
 	<li>Gmail-style placeholders are now cached &amp; no longer change color all the time</li>
 	<li>Equalizer fixes (DSP manager shuts down if Shuttle EQ is in use - less glitches &amp; DSP crashes)</li>
-	<li>Add support for Google Now voice commands (play x artist/album/song)</li>
+	<li>Add support for Google Now voice commands (play x artist/album/GMusicSong)</li>
 	<li>Fix sleep timer display issues in Android 4.4 (KitKat)</li>
 	<li>Add option to edit album-artist tag in tag editor</li>
 	<li>Display duration/artist/album information for songs in the Genres category</li>
 	<li>Add lockscreen seekbar controls for Android 4.4 (KitKat)</li>
 	<li>Move overflow icon slightly in to avoid fast-scroller overlap</li>
-	<li>Fix issue where search results displayed an empty image frame for song items</li>
+	<li>Fix issue where search results displayed an empty image frame for GMusicSong items</li>
 	<li>Updated Russian translations</li>
 </ul>
 <h4>1.2.8</h4>
@@ -807,7 +807,7 @@
 	<li>Minor UI fixes</li>
 	<li>Remove option to disable cards-style</li>
 	<li>Moved themes to 'interface' menu</li>
-	<li>Fixed sleep timer 'wait til end of song' function</li>
+	<li>Fixed sleep timer 'wait til end of GMusicSong' function</li>
 	<li>Fixed equalizer crash</li>
 	<li>Fixed issue where non-functional equalizer band was being shown</li>
 	<li>Fixed bug where changes to queue order were not being respected</li>
@@ -837,7 +837,7 @@
 </ul>
 <h4>1.2.1</h4>
 <ul>
-	<li>Sleep timer - option to play last song to end. Otherwise, music fades out when time is up.</li>
+	<li>Sleep timer - option to play last GMusicSong to end. Otherwise, music fades out when time is up.</li>
 	<li>List sorting options now work correctly across all categories</li>
 	<li>Tag editing improved (should work more consistently)</li>
 	<li>Some major force close errors resolved</li>
@@ -855,7 +855,7 @@
 	<li>&nbsp;4x4 Widget</li>
 	<li>Enqueue now works even when shuffle is on</li>
 	<li>Swiping the album art no longer ignores shuffle (will momentarily display incorrect album art)</li>
-	<li>Interface settings menu added. Option to stay on same page after pressing a song.</li>
+	<li>Interface settings menu added. Option to stay on same page after pressing a GMusicSong.</li>
 	<li>Seekbar visibility improved in dark theme</li>
 	<li>Force close error occurring when artist name contains an apostrophe (e.g. Lil' Wayne) fixed</li>
 	<li>Various other force close errors fixed</li>
@@ -886,7 +886,7 @@
 	<li>Use AppCompat ActionBar instead of ActionBarSherlock</li>
 	<li>Reduce APK size substantially</li>
 	<li>Add swipe to remove for playlists</li>
-	<li>Add option to share current song with #NowPlaying</li>
+	<li>Add option to share current GMusicSong with #NowPlaying</li>
 	<li>Add musiXmatch lyrics plugin</li>
 	<li>Navigation from Now Playing -&gt; Album -&gt; Artist re-introduced</li>
 	<li>Improved artwork downloading including automatic downloading</li>

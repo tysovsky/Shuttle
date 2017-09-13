@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Повтор текущего трека</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Повтор всех треков</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Поставить на звонок</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" выбран как рингтон на звонок.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Невозможно поставить на звонок</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <!-- Toast after selecting an empty playlist -->
     <string name="emptyplaylist">Выбранный плейлист пуст.</string>
     <!-- -->
@@ -45,7 +45,7 @@
     <string name="playlist_deleted_message">Список воспроизведения удален.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Плейлист переименован.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="one">1 песня добавлена в очередь.</item>
@@ -55,7 +55,7 @@
         <item quantity="many"><xliff:g id="number" example="27">%d</xliff:g>
 песен добавлены в очередь.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> добавлено в избранное</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> удалено из избранного</string>
     <!-- ## Dialogs ## -->
@@ -68,11 +68,11 @@
     <string name="share_failed">Извините, невозможно поделиться этим файлом</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Чем вы хотите поделиться?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Информация о текущем треке</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">Аудиофайл</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Поделиться треком:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Сохранение плейлиста</string>
@@ -126,10 +126,10 @@
     <string name="get_pro_button_play_store">Play Маркет</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Следующие альбомы:<xliff:g id="album">%s</xliff:g> будут безвозвратно удалены.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g> будет безвозвратно удалена.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g> будет безвозвратно удалена.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">Следующие песни:<xliff:g id="song">%s</xliff:g> будут безвозвратно удалены.</string>
+    <string name="delete_song_desc_multiple">Следующие песни:<xliff:g id="GMusicSong">%s</xliff:g> будут безвозвратно удалены.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> песни (-ен) удалены</string>
     <!-- Toast shown when failing to delete songs-->
@@ -147,7 +147,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle просит разрешение на  \'запись настроек\', чтобы поставить на звонок.\n\nПосле предоставления разрешения, попробуйте установить рингтон снова.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> уже существует в этом плейлисте. Всё равно добавить?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> уже существует в этом плейлисте. Всё равно добавить?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Применить ко всем (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -554,7 +554,7 @@
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">Таймер сна</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Воспроизвести последнюю песню до конца</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">Стоп</string>
@@ -599,7 +599,7 @@
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Перезаписать</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1 песня</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

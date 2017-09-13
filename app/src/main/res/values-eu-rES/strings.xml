@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Abesti hau errepikatu</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Abesti guztiak errepikatu</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Dei-doinu bezala ezarri</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" dei-doinu bezala ezarria.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Ezin izan da dei-doinua ezarri</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="one">Abesti bat erreprodukzio zerrendara gehituta.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> abesti erreprodukzio zerrendara gehituta.</item>
@@ -49,14 +49,14 @@
     <string name="playlist_deleted_message">Erreprodukzio zerrenda ezabatua</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Zerrenda berrizendatua.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="one">Abesti bat ilarara gehitua.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g>
 abesti ilarara gehituak.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> gogokoetara gehitua.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> gogokoetik kendua.</string>
     <!-- ## Dialogs ## -->
@@ -69,11 +69,11 @@ abesti ilarara gehituak.</item>
     <string name="share_failed">Barkatu, fitxategi hau ezin izan da banatu</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Zer banatu nahi duzu?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Abesti honen informazioa</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">Audio fitxategia</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Abestia honen bidez banatu:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Erreprodukzio zerrenda gordetzen</string>
@@ -120,10 +120,10 @@ abesti ilarara gehituak.</item>
     <string name="get_pro_button_play_store">Play Store</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Hurrengo albumen kanta guztiak:<xliff:g id="album">%s</xliff:g>betirako ezabatuak izango dira.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc">\"<xliff:g id="song">%s</xliff:g>\" betirako ezabatua izango da.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc">\"<xliff:g id="GMusicSong">%s</xliff:g>\" betirako ezabatua izango da.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">Hurrengo abesti hauek:<xliff:g id="song">%s</xliff:g>betirako ezabatuak izango dira.</string>
+    <string name="delete_song_desc_multiple">Hurrengo abesti hauek:<xliff:g id="GMusicSong">%s</xliff:g>betirako ezabatuak izango dira.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> abesti ezabatuak.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -141,7 +141,7 @@ abesti ilarara gehituak.</item>
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle-ek idazketa baimenak behar ditu zure dei-doinua ezartzeko.\n\nBaimena eman ostean, saiatu dei-doinua berriro aukeratzen.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> jada erreprodukzio-zerrendan existizen da. Gehitu nahi duzu?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> jada erreprodukzio-zerrendan existizen da. Gehitu nahi duzu?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Denei aplikatu (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -539,7 +539,7 @@ karpeta</item>
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">Atsedeneko tenporizadorea</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Azken abestia bukaeraraino erreproduzitu</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">Gelditu</string>
@@ -584,7 +584,7 @@ karpeta</item>
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Gainidatzi</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">Abesti 1</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

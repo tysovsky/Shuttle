@@ -1705,6 +1705,7 @@ public class MusicService extends Service {
             currentSong = song;
 
             if (player != null) {
+                //TODO: Check if a song is local or gmusic. If GMusic get streamable URL
                 player.setDataSource(song.path);
                 if (player != null && player.isInitialized()) {
                     openFailedCounter = 0;

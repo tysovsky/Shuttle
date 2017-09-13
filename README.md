@@ -43,7 +43,7 @@ See the [Contributing](.github/CONTRIBUTING.md) document. This is/will become a 
 
 #### History:
 
-Shuttle started some time in early 2012, as a project to learn Java (and programming in general). Initially, it was based off of the [Random Music Player](https://github.com/android/platform_development/tree/master/samples/RandomMusicPlayer/src/com/example/android/musicplayer) sample project by Google. I clearly recall how happy I was when I managed to wrangle that project to play a song of my choosing!
+Shuttle started some time in early 2012, as a project to learn Java (and programming in general). Initially, it was based off of the [Random Music Player](https://github.com/android/platform_development/tree/master/samples/RandomMusicPlayer/src/com/example/android/musicplayer) sample project by Google. I clearly recall how happy I was when I managed to wrangle that project to play a GMusicSong of my choosing!
 
 After lots of blog reading and trial and error, I eventually stumbled upon Googles [Default Music Player](https://github.com/android/platform_packages_apps_music). At the time I had no idea what I was doing, but for better or worse, I made a habit of not copying classes, but writing the code out myself. This tedious process lasted a while, but it was my way of trying to ensure I understood what was going on when I copied a class into my app.
 

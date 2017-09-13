@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Lặp lại bài hát hiện tại</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Lặp lại tất cả bài hát</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Dùng làm nhạc chuông</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" được đặt làm nhạc chuông.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Không thể đặt làm nhạc chuông</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="other"><xliff:g id="number" example="27">%d</xliff:g> bài hát được thêm vào danh sách.</item>
     </plurals>
@@ -48,13 +48,13 @@
     <string name="playlist_deleted_message">Đã xoá danh sách.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Đã đổi tên danh sách.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g>
             bài hát được thêm vào danh sách chờ.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> được thêm vào yêu thích.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> được xoá khỏi yêu thích.</string>
     <!-- ## Dialogs ## -->
@@ -67,11 +67,11 @@
     <string name="share_failed">Rất tiếc, không thể chia sẻ tập tin này</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Bạn muốn chia sẻ?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Thông tin đang phát</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">Tập tin âm thanh</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Chia sẻ bài hát hiện tại qua:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Lưu danh sách</string>
@@ -117,10 +117,10 @@
     <string name="get_pro_button_play_store">CH Play</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Những album này:<xliff:g id="album">%s</xliff:g>Sẽ bị xoá vĩnh viễn.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g> sẽ bị xoá vĩnh viễn.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g> sẽ bị xoá vĩnh viễn.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">Những bài hát này:<xliff:g id="song">%s</xliff:g>Sẽ bị xoá vĩnh viễn.</string>
+    <string name="delete_song_desc_multiple">Những bài hát này:<xliff:g id="GMusicSong">%s</xliff:g>Sẽ bị xoá vĩnh viễn.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast">Đã xoá <xliff:g id="number">%d</xliff:g> bài hát.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -138,7 +138,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle yêu cầu quyền \'ghi thiết lập\' để đặt nhạc chuông.\n\nSau khi cấp quyền, hãy thử đặt nhạc chuông lần nữa.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> đã có trong danh sách. Vẫn cứ thêm vào?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> đã có trong danh sách. Vẫn cứ thêm vào?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Áp dụng cho tất cả (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -531,7 +531,7 @@
     <string name="sort_files_track_name">Tên bài hát</string>
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Phát hết bài cuối</string>
     <!-- Sleep timer "Stop" -->
     <!-- Sleep timer stop message "Stop sleep timer?" -->
@@ -567,7 +567,7 @@
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Ghi đè</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1 bài hát</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

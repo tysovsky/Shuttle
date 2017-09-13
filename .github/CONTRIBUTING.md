@@ -80,7 +80,7 @@ I've outlined some of the more commonly used / intricate aspects of Shuttle, in 
 
 I've started to recently adopt `RXJava`, which is best demonstrated in the `DataManager` class, which is used to build an in-memory version of the MediaStore, using `RXJava` `BehaviorSubject`s. The `DataManager` also does some parsing of songs on the device, to populate the AlbumArtist field.
 
-Any time you need to get to a song/album/artist, `DataManager.getInstance()` is a good place to start.
+Any time you need to get to a GMusicSong/album/artist, `DataManager.getInstance()` is a good place to start.
 
 
 ##### ViewModelAdapter/ViewModel

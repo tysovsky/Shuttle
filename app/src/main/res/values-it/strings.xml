@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Ripetizione brano corrente.</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Ripetizione di tutti i brani.</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Usa come suoneria</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" impostata come suoneria.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Non è possibile impostare la suoneria</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="one">Un brano aggiunto alla playlist.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> brani aggiunti alla playlist.</item>
@@ -49,13 +49,13 @@
     <string name="playlist_deleted_message">Playlist eliminata.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Playlist rinominata.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="one">1 brano aggiunto alla coda.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> brani aggiunti alla coda.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> aggiunta ai preferiti.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> rimossa dai preferiti.</string>
     <!-- ## Dialogs ## -->
@@ -68,11 +68,11 @@
     <string name="share_failed">Mi dispiace, questo file non può essere condiviso</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Cosa vuoi condividere?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Informazioni \"in riproduzione\"</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">File audio</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Condivi il brano in riproduzione con</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Salva playlist</string>
@@ -117,10 +117,10 @@
     <string name="get_pro_button_play_store">Play Store</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Tutti i brani negli album <xliff:g id="album">%s</xliff:g>saranno eliminati definitivamente.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g> sarà eliminata definitivamente.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g> sarà eliminata definitivamente.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">I seguenti brani:<xliff:g id="song">%s</xliff:g>saranno eliminati permanentemente.</string>
+    <string name="delete_song_desc_multiple">I seguenti brani:<xliff:g id="GMusicSong">%s</xliff:g>saranno eliminati permanentemente.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> brani cancellati.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -138,7 +138,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle richiede un permesso di scrittura allo scopo di impostare la suoneria.\nDopo aver dato il permesso prova a impostare la suoneria ancora.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> già presente in questa playlist. Aggiungere lo stesso?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> già presente in questa playlist. Aggiungere lo stesso?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Applica a tutti (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -539,7 +539,7 @@
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">Spegnimento automatico</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Riproduci l\'ultimo brano fino alla fine</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">Ferma</string>
@@ -584,7 +584,7 @@
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Sovrascrivi</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1 brano</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

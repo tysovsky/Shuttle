@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':gmusic',
         'libraries/:glidepalette',
         'libraries/:ccl',
         'libraries/:navigation',

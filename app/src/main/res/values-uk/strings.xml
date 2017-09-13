@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">Повторювати поточну пісню.</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">Повторювати всі пісні</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">Поставити на дзвінок</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set"><xliff:g example="Alarm Bell" id="name">%s</xliff:g> обрано в якості рингтону.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">Не можу встановити рингтон</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="one">1 композицію додано в плейлист.</item>
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> композиції додано в плейлист.</item>
@@ -51,7 +51,7 @@
     <string name="playlist_deleted_message">Плейлист видалено.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">Плейлист перейменовано.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="one">1 композицію додано в чергу</item>
@@ -60,7 +60,7 @@
         <item quantity="few"><xliff:g example="27" id="number">%d</xliff:g> композицій додано в чергу.</item>
         <item quantity="many"><xliff:g example="27" id="number">%d</xliff:g> композицій додано в чергу.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g> додано у вибрані.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g> вилучено з вибраних.</string>
     <!-- ## Dialogs ## -->
@@ -73,11 +73,11 @@
     <string name="share_failed">Вибачте, цим файлом неможливо поділитись</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">Чим би ви хотіли поділитись?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">Інформація про відтворюваний трек</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">Аудіофайл</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">Поділитися треком:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">Збереження плейлиста</string>
@@ -123,10 +123,10 @@
     <string name="get_pro_button_play_store">Play Store</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">Всі пісні з поточних альбомів:<xliff:g id="album">%s</xliff:g>буде назавжди видалено.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc">\"<xliff:g id="song">%s</xliff:g>\" буде назавжди видалено.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc">\"<xliff:g id="GMusicSong">%s</xliff:g>\" буде назавжди видалено.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">Поточні пісні:<xliff:g id="song">%s</xliff:g>будуть назавжди видалені.</string>
+    <string name="delete_song_desc_multiple">Поточні пісні:<xliff:g id="GMusicSong">%s</xliff:g>будуть назавжди видалені.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g> пісні видалені.</string>
     <!-- Toast shown when failing to delete songs-->
@@ -144,7 +144,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle потребує дозволу на \"запис налаштувань\", щоб налаштувати ваш рингтон.\n\nПісля надання дозволу, спробуйте налаштувати ваш рингтон ще раз.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> вже є у цьому плейлісті. Додати пропри все?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> вже є у цьому плейлісті. Додати пропри все?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">Застосувати до всіх (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -528,7 +528,7 @@
     <string name="sort_files_track_name">Назва композиції</string>
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">Відтворити останній трек до кінця</string>
     <!-- Sleep timer "Stop" -->
     <!-- Sleep timer stop message "Stop sleep timer?" -->
@@ -564,7 +564,7 @@
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">Перезаписати</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1 композиція</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

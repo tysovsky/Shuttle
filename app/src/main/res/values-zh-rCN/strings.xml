@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">重复播放当前歌曲</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">重复播放所有歌曲</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">设为手机铃声</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\"已设为手机铃声</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">无法设置为铃声</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="other">已添加<xliff:g example="27" id="number">%d</xliff:g>首歌曲到播放列表</item>
     </plurals>
@@ -48,12 +48,12 @@
     <string name="playlist_deleted_message">播放列表已删除</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">已重命名播放列表</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="other">已添加<xliff:g example="27" id="number">%d</xliff:g>首歌曲到播放队列</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g>已添加到我的最爱</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g>已从我的最爱中移除</string>
     <!-- ## Dialogs ## -->
@@ -66,11 +66,11 @@
     <string name="share_failed">很抱歉,该文件无法分享</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">您想要分享什么?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">正在播放信息</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">音频文件</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">分享当前音乐,通过:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">正在保存播放列表</string>
@@ -118,10 +118,10 @@
     <string name="get_pro_button_play_store">Play 商店</string>
     <string name="get_pro_button_amazon">亚马逊</string>
     <string name="delete_album_desc_multiple">以下的专辑:<xliff:g id="album">%s</xliff:g>将被永久删除</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g>将被永久删除</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g>将被永久删除</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">以下的歌曲:<xliff:g id="song">%s</xliff:g>将被永久删除</string>
+    <string name="delete_song_desc_multiple">以下的歌曲:<xliff:g id="GMusicSong">%s</xliff:g>将被永久删除</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast">已删除<xliff:g id="number">%d</xliff:g>首歌曲</string>
     <!-- Toast shown when failing to delete songs-->
@@ -139,7 +139,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle需要权限\'写设置\'以设置铃声\n\n授予权限后尝试重新设置您的铃声.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g>-<xliff:g id="song">%2$s</xliff:g>已存在这个播放列表,是否继续添加?</string>
+    <string name="dialog_message_playlist_add_duplicate"><xliff:g id="artist">%1$s</xliff:g>-<xliff:g id="GMusicSong">%2$s</xliff:g>已存在这个播放列表,是否继续添加?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all"><xliff:g id="number">%d</xliff:g>应用所有</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -542,7 +542,7 @@ www.shuttlemusicplayer.com</string>
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">睡眠定时器</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">播放完最后一首歌曲后休眠</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">停止</string>
@@ -587,7 +587,7 @@ www.shuttlemusicplayer.com</string>
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">覆盖</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">1首歌曲</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">

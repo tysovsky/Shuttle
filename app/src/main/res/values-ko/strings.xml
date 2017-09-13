@@ -30,13 +30,13 @@
     <string name="repeat_current_notif">현재 노래 반복</string>
     <!-- Toast after turning repeat all on -->
     <string name="repeat_all_notif">모든 노래 반복</string>
-    <!-- Individual song context menu item -->
+    <!-- Individual GMusicSong context menu item -->
     <string name="ringtone_menu">벨소리로 설정</string>
-    <!-- Toast after setting a song as phone ringtone -->
+    <!-- Toast after setting a GMusicSong as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" 이(가) 벨소리로 지정되었습니다.</string>
     <!-- Toast if setting ringtone fails -->
     <string name="ringtone_set_failed">벨소리로 설정할 수 없습니다</string>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g>개의 노래가 재생 목록에 추가되었습니다.</item>
     </plurals>
@@ -48,13 +48,13 @@
     <string name="playlist_deleted_message">재생 목록이 삭제되었습니다.</string>
     <!-- Transient popup message shown after renaming a playlist -->
     <string name="playlist_renamed_message">재생 목록 이름이 변경되었습니다.</string>
-    <!-- Toast confirming that song(s) was/were deleted. -->
+    <!-- Toast confirming that GMusicSong(s) was/were deleted. -->
     <!-- -->
     <plurals name="NNNtrackstoqueue">
         <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g>
             개의 노래가 대기열에 추가되었습니다.</item>
     </plurals>
-    <!-- Toasts after adding song(s) to playlists -->
+    <!-- Toasts after adding GMusicSong(s) to playlists -->
     <string name="song_to_favourites"><xliff:g id="song_name">%s</xliff:g>이(가) 즐겨찾기에 추가되었습니다.</string>
     <string name="song_removed_from_favourites"><xliff:g id="song_name">%s</xliff:g>이(가) 즐겨찾기에서 삭제되었습니다.</string>
     <!-- ## Dialogs ## -->
@@ -67,11 +67,11 @@
     <string name="share_failed">죄송합니다. 이 파일은 공유할 수 없습니다</string>
     <!-- Displays when you click 'share' -->
     <string name="share_dialog_title">무엇을 공유하시겠습니까?</string>
-    <!-- Option to share song info -->
+    <!-- Option to share GMusicSong info -->
     <string name="share_option_song_info">현재 재생 정보</string>
     <!-- Option to share audio file -->
     <string name="share_option_audio_file">오디오 파일</string>
-    <!-- Displays when you need to choose which app to share the song with -->
+    <!-- Displays when you need to choose which app to share the GMusicSong with -->
     <string name="share_via">다음으로 공유:</string>
     <!-- Displayed when an M3U playlist is being saved-->
     <string name="saving_playlist">재생 목록 저장 중</string>
@@ -118,10 +118,10 @@
     <string name="get_pro_button_play_store">Play 스토어</string>
     <string name="get_pro_button_amazon">Amazon</string>
     <string name="delete_album_desc_multiple">앨범 <xliff:g id="album">%s</xliff:g>의 모든 노래가 영구적으로 삭제됩니다.</string>
-    <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc"><xliff:g id="song">%s</xliff:g>이(가) 영구적으로 삭제됩니다.</string>
+    <!-- Delete confirmation dialog when deleting a single GMusicSong -->
+    <string name="delete_song_desc"><xliff:g id="GMusicSong">%s</xliff:g>이(가) 영구적으로 삭제됩니다.</string>
     <!-- Delete confirmation dialog message title when deleting songs -->
-    <string name="delete_song_desc_multiple">노래 <xliff:g id="song">%s</xliff:g>이(가) 영구적으로 삭제됩니다.</string>
+    <string name="delete_song_desc_multiple">노래 <xliff:g id="GMusicSong">%s</xliff:g>이(가) 영구적으로 삭제됩니다.</string>
     <!-- Toast shown when songs are successfully deleted -->
     <string name="delete_songs_success_toast"><xliff:g id="number">%d</xliff:g>개의 노래가 삭제되었습니다</string>
     <!-- Toast shown when failing to delete songs-->
@@ -139,7 +139,7 @@
     <!-- "Set Ringtone" message -->
     <string name="dialog_message_set_ringtone">Shuttle이 벨소리를 설정하기 위해 \'시스템 설정 수정\' 권한이 필요합니다.\n\n권한 허용 후, 다시 시도해주세요.</string>
     <!-- Message displayed in dialog when attempting to add duplicates to playlist -->
-    <string name="dialog_message_playlist_add_duplicate">재생 목록에 <xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="song">%2$s</xliff:g> 이(가) 이미 존재합니다. 그래도 추가하시겠습니까?</string>
+    <string name="dialog_message_playlist_add_duplicate">재생 목록에 <xliff:g id="artist">%1$s</xliff:g> - <xliff:g id="GMusicSong">%2$s</xliff:g> 이(가) 이미 존재합니다. 그래도 추가하시겠습니까?</string>
     <!-- Checkbox text 'apply to all' -->
     <string name="dialog_checkbox_playlist_duplicate_apply_all">모두 적용 (<xliff:g id="number">%d</xliff:g>)</string>
     <!-- Title displayed in dialog when attempting to add duplicates to playlist -->
@@ -536,7 +536,7 @@
     <!-- ## Sleep Timer ## -->
     <!-- Sleep timer title -->
     <string name="sleep_timer">수면 타이머</string>
-    <!--Sleep timer "Play last song to end" -->
+    <!--Sleep timer "Play last GMusicSong to end" -->
     <string name="sleep_timer_play_to_end">마지막 노래를 끝까지 재생</string>
     <!-- Sleep timer "Stop" -->
     <string name="sleep_timer_stop_button">멈춤</string>
@@ -581,7 +581,7 @@
     <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
     <string name="create_playlist_overwrite_text">덮어쓰기</string>
     <!-- ## Various plurals ## -->
-    <!-- used in various places to indicate there is one song for a given artist or album -->
+    <!-- used in various places to indicate there is one GMusicSong for a given artist or album -->
     <string name="onesong">노래 1곡</string>
     <!-- used in various places to indicate there is some number other than one songs for a given artist or album. -->
     <plurals name="Nsongs">
