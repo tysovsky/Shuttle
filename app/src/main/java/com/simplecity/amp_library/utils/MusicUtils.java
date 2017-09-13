@@ -13,6 +13,9 @@ import com.simplecity.amp_library.model.Genre;
 import com.simplecity.amp_library.model.Song;
 import com.simplecity.amp_library.playback.MusicService;
 import com.simplecity.amp_library.rx.UnsafeConsumer;
+import com.tysovsky.gmusic.Status;
+import com.tysovsky.gmusic.core.GMusicClient;
+import com.tysovsky.gmusic.interfaces.GetStreamUrlListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,21 @@ public class MusicUtils {
      * @param position position of the pressed song
      */
     public static void playAll(List<Song> songs, int position, UnsafeConsumer<String> onEmpty) {
-        playAll(songs, position, false, onEmpty);
+        if (songs.get(position).isGMusicSong){
+            GMusicClient.getInstance().getStreamingUrlAsync(songs.get(position).gMusicId, new GetStreamUrlListener() {
+                @Override
+                public void OnCompleted(int status, String streamUrl) {
+                    if (status == Status.SUCCESS){
+                        songs.get(position).path = streamUrl;
+                        playAll(songs, position, false, onEmpty);
+                    }
+                }
+            });
+        }
+        else{
+            playAll(songs, position, false, onEmpty);
+        }
+
     }
 
     /**

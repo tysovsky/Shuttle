@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.support.v4.content.ContextCompat;
@@ -42,6 +43,11 @@ import com.simplecity.amp_library.utils.LogUtils;
 import com.simplecity.amp_library.utils.SettingsManager;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tysovsky.gmusic.Status;
+import com.tysovsky.gmusic.core.GMusicClient;
+import com.tysovsky.gmusic.interfaces.GetAllSongsListener;
+import com.tysovsky.gmusic.interfaces.LoginListener;
+import com.tysovsky.gmusic.models.GMusicSong;
 
 import org.jaudiotagger.tag.TagOptionSingleton;
 
@@ -57,6 +63,7 @@ import io.fabric.sdk.android.Fabric;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
+
 
 public class ShuttleApplication extends Application {
 
@@ -197,6 +204,27 @@ public class ShuttleApplication extends Application {
                 .andThen(deleteOldResources())
                 .subscribeOn(Schedulers.io())
                 .subscribe();
+
+        GMusicClient client = new GMusicClient(this);
+        if (!client.isAuthenticated()){
+            client.loginAsync("username@gmail.com", "password", Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID), new LoginListener() {
+                @Override
+                public void OnComplete(int status) {
+                    Log.d(TAG, "Login status: " + status);
+                }
+            });
+        }
+        else {
+            client.getAllSongsAsync(new GetAllSongsListener() {
+                @Override
+                public void OnCompleted(int status, List<GMusicSong> songs) {
+                    if (status == Status.SUCCESS){
+                        Log.d(TAG, songs.size() + " songs retrieved");
+                    }
+                }
+            });
+        }
+
     }
 
     public RefWatcher getRefWatcher() {

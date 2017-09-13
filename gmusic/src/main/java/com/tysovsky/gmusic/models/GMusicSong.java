@@ -11,6 +11,7 @@ public class GMusicSong {
     public UUID     id;
     public String   title,
                     artist,
+                    album,
                     albumArtist,
                     composer,
                     genre,
@@ -18,10 +19,11 @@ public class GMusicSong {
                     storeId,
                     nid,
                     albumId,
-                    clientId;
+                    clientId,
+                    comment;
     public int      year,
                     trackNumber,
-                    totalTrackNumber,
+                    totalTrackCount,
                     discNumber,
                     totalDiscCount,
                     beatsPerMinute,

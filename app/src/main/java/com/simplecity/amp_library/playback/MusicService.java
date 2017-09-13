@@ -83,6 +83,9 @@ import com.simplecity.amp_library.utils.PlaylistUtils;
 import com.simplecity.amp_library.utils.SettingsManager;
 import com.simplecity.amp_library.utils.ShuttleUtils;
 import com.simplecity.amp_library.utils.SleepTimer;
+import com.tysovsky.gmusic.Status;
+import com.tysovsky.gmusic.core.GMusicClient;
+import com.tysovsky.gmusic.interfaces.GetStreamUrlListener;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -205,6 +208,7 @@ public class MusicService extends Service {
         int GO_TO_NEXT = 10;
         int GO_TO_PREV = 11;
         int SHUFFLE_ALL = 12;
+        int TRACK_STARTED = 13;
     }
 
     private static final Random shuffler = new Random();
@@ -1625,51 +1629,53 @@ public class MusicService extends Service {
 
             currentSong = getCurrentPlaylist().get(playPos);
 
-            while (true) {
-                if (open(currentSong)) {
-                    break;
-                }
-                // If we get here then opening the file failed.
-                if (openFailedCounter++ < 10 && getCurrentPlaylist().size() > 1) {
-                    final int pos = getNextPosition(false);
-                    if (pos < 0) {
-                        scheduleDelayedShutdown();
-                        if (isSupposedToBePlaying) {
-                            isSupposedToBePlaying = false;
-                            notifyChange(InternalIntents.PLAY_STATE_CHANGED);
-                        }
-                        return;
+
+                while (true) {
+                    if (open(currentSong)) {
+                        break;
                     }
-                    playPos = pos;
-                    stop(false);
-                    playPos = pos;
+                    // If we get here then opening the file failed.
+                    if (openFailedCounter++ < 10 && getCurrentPlaylist().size() > 1) {
+                        final int pos = getNextPosition(false);
+                        if (pos < 0) {
+                            scheduleDelayedShutdown();
+                            if (isSupposedToBePlaying) {
+                                isSupposedToBePlaying = false;
+                                notifyChange(InternalIntents.PLAY_STATE_CHANGED);
+                            }
+                            return;
+                        }
+                        playPos = pos;
+                        stop(false);
+                        playPos = pos;
 
-                    currentSong = getCurrentPlaylist().get(playPos);
-                } else {
-                    openFailedCounter = 0;
-                    shutdown = true;
-                    break;
+                        currentSong = getCurrentPlaylist().get(playPos);
+                    } else {
+                        openFailedCounter = 0;
+                        shutdown = true;
+                        break;
+                    }
                 }
-            }
-            // Go to bookmark if needed
-            if (isPodcast()) {
-                long bookmark = getBookmark();
-                // Start playing a little bit before the bookmark,
-                // so it's easier to get back in to the narrative.
-                seekTo(bookmark - 5000);
-            }
-
-            if (shutdown) {
-                scheduleDelayedShutdown();
-                if (isSupposedToBePlaying) {
-                    isSupposedToBePlaying = false;
-                    notifyChange(InternalIntents.PLAY_STATE_CHANGED);
+                // Go to bookmark if needed
+                if (isPodcast()) {
+                    long bookmark = getBookmark();
+                    // Start playing a little bit before the bookmark,
+                    // so it's easier to get back in to the narrative.
+                    seekTo(bookmark - 5000);
                 }
 
-            }
-            if (openNext) {
-                setNextTrack();
-            }
+                if (shutdown) {
+                    scheduleDelayedShutdown();
+                    if (isSupposedToBePlaying) {
+                        isSupposedToBePlaying = false;
+                        notifyChange(InternalIntents.PLAY_STATE_CHANGED);
+                    }
+
+                }
+                if (openNext) {
+                    setNextTrack();
+                }
+
         }
     }
 
@@ -1704,13 +1710,11 @@ public class MusicService extends Service {
 
             currentSong = song;
 
-            if (player != null) {
-                //TODO: Check if a song is local or gmusic. If GMusic get streamable URL
-                player.setDataSource(song.path);
-                if (player != null && player.isInitialized()) {
-                    openFailedCounter = 0;
-                    return true;
-                }
+            player.setDataSource(song.path);
+            if (player != null && player.isInitialized()) {
+                openFailedCounter = 0;
+                playerHandler.sendEmptyMessage(PlayerHandler.TRACK_STARTED);
+                return true;
             }
 
             stop(true);
@@ -2245,9 +2249,25 @@ public class MusicService extends Service {
             saveBookmarkIfNeeded();
             stop(false);
             playPos = pos;
-            openCurrentAndNext();
-            play();
-            notifyChange(InternalIntents.META_CHANGED);
+            if (getCurrentPlaylist().get(playPos).isGMusicSong){
+                GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(playPos).gMusicId, new GetStreamUrlListener() {
+                    @Override
+                    public void OnCompleted(int status, String streamUrl) {
+                        if (status == com.tysovsky.gmusic.Status.SUCCESS){
+                            getCurrentPlaylist().get(playPos).path = streamUrl;
+                            openCurrentAndNext();
+                            play();
+                            notifyChange(InternalIntents.META_CHANGED);
+                        }
+
+                    }
+                });
+            }
+            else {
+                openCurrentAndNext();
+                play();
+                notifyChange(InternalIntents.META_CHANGED);
+            }
         }
     }
 

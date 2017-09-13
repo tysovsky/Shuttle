@@ -15,6 +15,9 @@ final class MediaPlayerHandler extends Handler {
     private final WeakReference<MusicService> mService;
     private float mCurrentVolume = 1.0f;
 
+    int lastMessage = -1;
+    long timeFromLastEnd = -1;
+
     MediaPlayerHandler(final MusicService service, final Looper looper) {
         super(looper);
         mService = new WeakReference<>(service);
@@ -69,15 +72,24 @@ final class MediaPlayerHandler extends Handler {
                     service.pause();
                     service.pauseOnTrackFinish = false;
                 }
+                lastMessage = MusicService.PlayerHandler.TRACK_WENT_TO_NEXT;
                 break;
             case MusicService.PlayerHandler.TRACK_ENDED:
-                service.notifyChange(MusicService.InternalIntents.TRACK_ENDING);
-                if (service.repeatMode == MusicService.RepeatMode.ONE) {
-                    service.seekTo(0);
-                    service.play();
-                } else {
-                    service.gotoNext(false);
+                if (lastMessage != MusicService.PlayerHandler.TRACK_ENDED && lastMessage != MusicService.PlayerHandler.GO_TO_NEXT){
+                    service.notifyChange(MusicService.InternalIntents.TRACK_ENDING);
+                    if (service.repeatMode == MusicService.RepeatMode.ONE) {
+                        service.seekTo(0);
+                        service.play();
+                    } else {
+                        service.gotoNext(false);
+                    }
+                    lastMessage = MusicService.PlayerHandler.TRACK_ENDED;
                 }
+
+                break;
+
+            case MusicService.PlayerHandler.TRACK_STARTED:
+                lastMessage = MusicService.PlayerHandler.TRACK_STARTED;
                 break;
             case MusicService.PlayerHandler.RELEASE_WAKELOCK:
                 service.wakeLock.release();
@@ -132,10 +144,12 @@ final class MediaPlayerHandler extends Handler {
 
             case MusicService.PlayerHandler.GO_TO_NEXT:
                 service.gotoNext(true);
+                lastMessage = MusicService.PlayerHandler.GO_TO_NEXT;
                 break;
 
             case MusicService.PlayerHandler.GO_TO_PREV:
                 service.previous();
+                lastMessage = MusicService.PlayerHandler.GO_TO_PREV;
                 break;
 
             case MusicService.PlayerHandler.SHUFFLE_ALL:

@@ -16,6 +16,8 @@ import com.simplecity.amp_library.sql.databases.WhitelistDbOpenHelper;
 import com.simplecity.amp_library.sql.sqlbrite.SqlBriteUtils;
 import com.squareup.sqlbrite2.BriteDatabase;
 import com.squareup.sqlbrite2.SqlBrite;
+import com.tysovsky.gmusic.core.GMusicClient;
+import com.tysovsky.gmusic.models.GMusicSong;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,23 +96,29 @@ public class DataManager {
 
             songsSubscription = Observable.combineLatest(songsObservable, getBlacklistRelay(), getWhitelistRelay(), (songs, blacklistedSongs, whitelistFolders) ->
             {
-                List<Song> result = songs;
+                List<Song> result = new ArrayList<>();
 
-                //Filter out blacklisted songs
-                if (!blacklistedSongs.isEmpty()) {
-                    result = Stream.of(songs)
-                            .filter(song -> !Stream.of(blacklistedSongs)
-                                    .anyMatch(blacklistedSong -> blacklistedSong.songId == song.id))
-                            .toList();
-                }
+                ArrayList<GMusicSong> gmusicSongs = GMusicClient.getInstance().getAllSongs();
 
-                //Filter out non-whitelisted folders
-                if (!whitelistFolders.isEmpty()) {
-                    result = Stream.of(result)
-                            .filter(song -> Stream.of(whitelistFolders)
-                                    .anyMatch(whitelistFolder -> StringUtils.containsIgnoreCase(song.path, whitelistFolder.folder)))
-                            .toList();
+                for (int i = 0; i < gmusicSongs.size(); i++){
+                    result.add(new Song(gmusicSongs.get(i)));
                 }
+//
+//                //Filter out blacklisted songs
+//                if (!blacklistedSongs.isEmpty()) {
+//                    result = Stream.of(songs)
+//                            .filter(song -> !Stream.of(blacklistedSongs)
+//                                    .anyMatch(blacklistedSong -> blacklistedSong.songId == song.id))
+//                            .toList();
+//                }
+//
+//                //Filter out non-whitelisted folders
+//                if (!whitelistFolders.isEmpty()) {
+//                    result = Stream.of(result)
+//                            .filter(song -> Stream.of(whitelistFolders)
+//                                    .anyMatch(whitelistFolder -> StringUtils.containsIgnoreCase(song.path, whitelistFolder.folder)))
+//                            .toList();
+//                }
 
                 return result;
             })

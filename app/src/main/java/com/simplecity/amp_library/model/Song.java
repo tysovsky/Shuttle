@@ -26,11 +26,13 @@ import com.simplecity.amp_library.utils.ComparisonUtils;
 import com.simplecity.amp_library.utils.FileHelper;
 import com.simplecity.amp_library.utils.LogUtils;
 import com.simplecity.amp_library.utils.StringUtils;
+import com.tysovsky.gmusic.models.GMusicSong;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import io.reactivex.Single;
 import retrofit2.Call;
@@ -65,9 +67,14 @@ public class Song implements
     public String path;
     public int bookMark;
 
+    public UUID gMusicId;
+    public boolean isGMusicSong = false;
+
     public String albumArtistName;
 
     private TagInfo tagInfo;
+
+
 
     private String durationLabel;
     private String bitrateLabel;
@@ -107,6 +114,51 @@ public class Song implements
                 .args(null)
                 .sort(MediaStore.Audio.Media.TRACK)
                 .build();
+    }
+
+    public Song(GMusicSong song){
+        isGMusicSong = true;
+
+        id = song.id.getLeastSignificantBits();
+        gMusicId = song.id;
+
+        name = song.title;
+
+        artistId = (long)song.artistIds[0].hashCode();
+
+        artistName = song.artist;
+
+        albumId = song.albumId.hashCode();
+
+        albumName = song.album;
+
+        duration = song.durationMillis;
+
+        year = song.year;
+
+        track = song.trackNumber;
+
+        if (track >= 1000) {
+            discNumber = track / 1000;
+            track = track % 1000;
+        }
+
+        dateAdded = (int)song.lastModifiedTimestamp;
+
+        path = "";
+
+        albumArtistName = artistName;
+
+        isPodcast = false;
+
+        bookMark = 0;
+
+        //Populate the artwork key & sort key properties if null.
+        setSortKey();
+        setArtworkKey();
+
+
+
     }
 
     public Song(Cursor cursor) {

@@ -70,24 +70,24 @@ android {
         // This API key is provided for convenience. Please go to https://www.last.fm/api/account/create and create your own.
         buildConfigField("String", "LASTFM_API_KEY", "\"${getProperty(getProperties('../public.properties'), 'LASTFM_API_KEY')}\"")
 
-        manifestPlaceholders = [CRASHLYTICS_API_KEY: ""]
+        manifestPlaceholders = [CRASHLYTICS_API_KEY: "8db4b876502056ee6521aaa31559d69ae4e9850b"]
     }
 
-    signingConfigs {
-        release {
-            Properties properties = getProperties('../keystore.properties')
-            storeFile file(getProperty(properties, 'store'))
-            keyAlias getProperty(properties, 'alias')
-            storePassword getProperty(properties, 'storePass')
-            keyPassword getProperty(properties, 'pass')
-        }
-    }
+//    signingConfigs {
+//        release {
+//            Properties properties = getProperties('../keystore.properties')
+//            storeFile file(getProperty(properties, 'store'))
+//            keyAlias getProperty(properties, 'alias')
+//            storePassword getProperty(properties, 'storePass')
+//            keyPassword getProperty(properties, 'pass')
+//        }
+//    }
 
     buildTypes {
 
         debug {
             applicationIdSuffix ".debug"
-            ext.enableCrashlytics = false
+            //ext.enableCrashlytics = false
         }
 
         release {
@@ -98,7 +98,7 @@ android {
             // For further optimisation, use 'proguard-android-optimize.txt' instead of 'proguard-android.txt'.
             // Last time I checked, it reduced by another ~5000 methods.
             proguardFiles getDefaultProguardFile('proguard-android.txt'), file('proguard-rules.pro')
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
 
             buildConfigField("String", "LASTFM_API_KEY", "\"${getProperty(getProperties('../private.properties'), 'LASTFM_API_KEY')}\"")
             manifestPlaceholders = [CRASHLYTICS_API_KEY: "${getProperty(getProperties('../private.properties'), 'CRASHLYTICS_API_KEY')}"]
@@ -230,11 +230,9 @@ android {
 
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
-
     // //////////////////////////////////////////////////////////////////////////
     // Google libs
     // /////////////////////////////////////////////////////////////////////////
-
     compile libs.cardView
     compile libs.design
     compile libs.palette
@@ -244,11 +242,9 @@ dependencies {
     compile libs.supportv4
     compile libs.firebaseCore
     compile libs.constraintLayout
-
     // //////////////////////////////////////////////////////////////////////////
     // Square libs
     // /////////////////////////////////////////////////////////////////////////
-
     compile libs.okio
     compile libs.okhttp
     compile libs.retrofit
@@ -257,11 +253,9 @@ dependencies {
     debugCompile libs.haha
     debugCompile libs.leakCanaryDebug
     releaseCompile libs.leakCanaryRel
-
     // //////////////////////////////////////////////////////////////////////////
     // External libs
     // /////////////////////////////////////////////////////////////////////////
-
     compile libs.navigation
     compile libs.recyclerAdapter
     compile libs.multiSheetView
@@ -273,7 +267,6 @@ dependencies {
     compile libs.glideOkhttp
     compile libs.glidePalette
     compile libs.permiso
-
     compile libs.rxAndroid
     compile libs.rxBinding
     compile libs.rxBindingAppCompat
@@ -282,7 +275,6 @@ dependencies {
     compile libs.rxRelay
     compile libs.rxBroadcast
     compile 'com.tspoon.traceur:traceur:1.0.1'
-
     compile libs.streams
     compile(libs.crashlytics) {
         transitive = true
@@ -295,16 +287,13 @@ dependencies {
     annotationProcessor libs.daggerAnnotationProcessor
     compile libs.expandableRecyclerView
     compile libs.aesthetic
-
     // //////////////////////////////////////////////////////////////////////////
     // Multidex (Only used in non-proguard pre-21 builds)
     // /////////////////////////////////////////////////////////////////////////
     compile libs.multiDex
-
     // //////////////////////////////////////////////////////////////////////////
     // Testing
     // /////////////////////////////////////////////////////////////////////////
-
     testCompile libs.junit
     testCompile libs.mockito
     testCompile libs.powermock
@@ -314,6 +303,7 @@ dependencies {
     androidTestCompile(libs.espresso) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    compile project(':gmusic')
 }
 
 configurations.all {
