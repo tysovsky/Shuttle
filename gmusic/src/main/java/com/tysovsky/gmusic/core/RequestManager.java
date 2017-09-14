@@ -21,6 +21,7 @@ public class RequestManager {
     private static final String jsUrl = "https://mclients.googleapis.com/sj/v2.5/",
             jsStreamUrl = "https://mclients.googleapis.com/music/";
 
+    public static final String GET_STREAM_URL_TAG = "getStreamUrl";
 
     public static Request getAllSongsRequest(){
         HttpUrl.Builder urlBuilder = HttpUrl.parse(jsUrl+"trackfeed").newBuilder()
@@ -63,6 +64,7 @@ public class RequestManager {
                 .addHeader("X-Device-ID", Utils.androidIdHexToDecimal(androidId))
                 .addHeader("Authorization", "GoogleLogin auth="+authToken)
                 .get()
+                .tag(GET_STREAM_URL_TAG)
                 .build();
 
         return request;

@@ -36,7 +36,7 @@ public class GMusicClient {
 
     private static Context context;
 
-    private OkHttpClient httpClient;
+    private static OkHttpClient httpClient = null;
     private String masterToken;
     private String authToken;
 
@@ -52,7 +52,8 @@ public class GMusicClient {
         StrictMode.setThreadPolicy(policy);
 
         this.context = context;
-        httpClient = new OkHttpClient();
+        if (httpClient == null)
+            httpClient = new OkHttpClient();
         //Check if already logged in
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
         masterToken = prefs.getString(Constants.SP_MASTER_TOKEN, null);
@@ -68,6 +69,19 @@ public class GMusicClient {
 
     public static GMusicClient getInstance(){
         return new GMusicClient(context);
+    }
+
+    public static void cancelRequests(String requestTag){
+        if (httpClient != null) {
+            for (Call call : httpClient.dispatcher().queuedCalls()) {
+                if (call.request().tag().equals(requestTag))
+                    call.cancel();
+            }
+            for (Call call : httpClient.dispatcher().runningCalls()) {
+                if (call.request().tag().equals(requestTag))
+                    call.cancel();
+            }
+        }
     }
 
     public boolean login(String username, String password, String androidId){

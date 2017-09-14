@@ -1,5 +1,7 @@
 package com.simplecity.amp_library.utils;
 
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.annimon.stream.function.Predicate;
 import com.jakewharton.rxrelay2.BehaviorRelay;
@@ -20,6 +22,7 @@ import com.tysovsky.gmusic.core.GMusicClient;
 import com.tysovsky.gmusic.models.GMusicSong;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -96,12 +99,35 @@ public class DataManager {
 
             songsSubscription = Observable.combineLatest(songsObservable, getBlacklistRelay(), getWhitelistRelay(), (songs, blacklistedSongs, whitelistFolders) ->
             {
-                List<Song> result = new ArrayList<>();
 
-                ArrayList<GMusicSong> gmusicSongs = GMusicClient.getInstance().getAllSongs();
+                List<Song> gMusicSongs = Stream.of(GMusicClient.getInstance().getAllSongs()).map(s -> new Song(s)).toList();
 
-                for (int i = 0; i < gmusicSongs.size(); i++){
-                    result.add(new Song(gmusicSongs.get(i)));
+
+                List<Song> distinctLocalArtists = Stream.of(songs).filter(StreamUtils.distinctByKey(song -> song.artistName)).toList();
+
+                HashMap<String, List<String>> artistAlbums = new HashMap<>();
+                for (Song artist: distinctLocalArtists){
+                    artistAlbums.put(artist.artistName, Stream.of(songs).filter(s->s.artistName.equals(artist.artistName)).filter(StreamUtils.distinctByKey(s->s.albumName)).map(s->s.albumName).toList());
+                }
+
+                ArrayList<Song>  gMusicSongsFiltered = new ArrayList<>();
+                for (int i = 0; i < gMusicSongs.size(); i++){
+                    Song song = gMusicSongs.get(i);
+                    Optional<Song> matchingArtist = Stream.of(distinctLocalArtists).
+                            filter(s ->  s.artistName.toLowerCase().equals(song.artistName.toLowerCase())).
+                            findFirst();
+                    if (matchingArtist.isPresent()){
+                        if(Stream.of(artistAlbums.get(song.artistName)).
+                                filter(s ->  s.toLowerCase().equals(song.albumName.toLowerCase())).
+                                findFirst().isPresent()){
+                            gMusicSongs.remove(i);
+                            continue;
+                        }
+                        song.artistId = matchingArtist.get().artistId;
+                    }
+
+                    gMusicSongsFiltered.add(song);
+
                 }
 //
 //                //Filter out blacklisted songs
@@ -120,7 +146,8 @@ public class DataManager {
 //                            .toList();
 //                }
 
-                return result;
+                songs.addAll(gMusicSongsFiltered);
+                return songs;
             })
                     .subscribe(songsRelay, error -> LogUtils.logException(TAG, "getSongsRelay threw error", error));
         }

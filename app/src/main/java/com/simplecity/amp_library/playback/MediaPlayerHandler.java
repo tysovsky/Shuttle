@@ -16,7 +16,7 @@ final class MediaPlayerHandler extends Handler {
     private float mCurrentVolume = 1.0f;
 
     int lastMessage = -1;
-    long timeFromLastEnd = -1;
+    public static boolean settingQueue = false;
 
     MediaPlayerHandler(final MusicService service, final Looper looper) {
         super(looper);
@@ -60,7 +60,8 @@ final class MediaPlayerHandler extends Handler {
                 break;
             case MusicService.PlayerHandler.TRACK_WENT_TO_NEXT:
                 service.notifyChange(MusicService.InternalIntents.TRACK_ENDING);
-                service.playPos = service.nextPlayPos;
+                if (!settingQueue)
+                    service.playPos = service.nextPlayPos;
                 if (service.playPos >= 0 && !service.getCurrentPlaylist().isEmpty()) {
                     service.currentSong = service.getCurrentPlaylist().get(service.playPos);
                 }

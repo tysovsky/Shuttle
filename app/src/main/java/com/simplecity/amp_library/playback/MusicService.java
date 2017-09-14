@@ -85,6 +85,7 @@ import com.simplecity.amp_library.utils.ShuttleUtils;
 import com.simplecity.amp_library.utils.SleepTimer;
 import com.tysovsky.gmusic.Status;
 import com.tysovsky.gmusic.core.GMusicClient;
+import com.tysovsky.gmusic.core.RequestManager;
 import com.tysovsky.gmusic.interfaces.GetStreamUrlListener;
 
 import java.io.ByteArrayOutputStream;
@@ -209,6 +210,8 @@ public class MusicService extends Service {
         int GO_TO_PREV = 11;
         int SHUFFLE_ALL = 12;
         int TRACK_STARTED = 13;
+        int SETTING_QUEUE_POSITION_START = 14;
+        int SETTING_QUEUE_POSITION_END = 15;
     }
 
     private static final Random shuffler = new Random();
@@ -1650,6 +1653,8 @@ public class MusicService extends Service {
                         playPos = pos;
 
                         currentSong = getCurrentPlaylist().get(playPos);
+
+                        currentSong.path = GMusicClient.getInstance().getStreamingUrl(currentSong.gMusicId);
                     } else {
                         openFailedCounter = 0;
                         shutdown = true;
@@ -1689,11 +1694,26 @@ public class MusicService extends Service {
                 && !getCurrentPlaylist().isEmpty()
                 && nextPlayPos < getCurrentPlaylist().size()) {
             final Song nextSong = getCurrentPlaylist().get(nextPlayPos);
-            try {
-                player.setNextDataSource(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI + "/" + nextSong.id);
-            } catch (Exception e) {
-                Log.e(TAG, "Error: " + e.getMessage());
-                CrashlyticsCore.getInstance().log("setNextTrack() with id failed. error: " + e.getLocalizedMessage());
+
+            if (nextSong.isGMusicSong){
+                GMusicClient.getInstance().getStreamingUrlAsync(nextSong.gMusicId, (status, streamUrl) -> {
+                    if (status == com.tysovsky.gmusic.Status.SUCCESS){
+                        try {
+                            player.setNextDataSource(streamUrl);
+                        } catch (Exception e) {
+                            Log.e(TAG, "Error: " + e.getMessage());
+                            CrashlyticsCore.getInstance().log("setNextTrack() with id failed. error: " + e.getLocalizedMessage());
+                        }
+                    }
+                });
+            }
+            else{
+                try {
+                    player.setNextDataSource(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI + "/" + nextSong.id);
+                } catch (Exception e) {
+                    Log.e(TAG, "Error: " + e.getMessage());
+                    CrashlyticsCore.getInstance().log("setNextTrack() with id failed. error: " + e.getLocalizedMessage());
+                }
             }
         } else {
             try {
@@ -2192,10 +2212,27 @@ public class MusicService extends Service {
             } else {
                 playPos = getCurrentPlaylist().size() - 1;
             }
-            stop(false);
-            openCurrent();
-            play();
-            notifyChange(InternalIntents.META_CHANGED);
+            if (getCurrentPlaylist().get(playPos).isGMusicSong){
+                GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
+                GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(playPos).gMusicId, new GetStreamUrlListener() {
+                    @Override
+                    public void OnCompleted(int status, String streamUrl) {
+                        if (status == com.tysovsky.gmusic.Status.SUCCESS){
+                            getCurrentPlaylist().get(playPos).path = streamUrl;
+                            stop(false);
+                            openCurrent();
+                            play();
+                            notifyChange(InternalIntents.META_CHANGED);
+                        }
+
+                    }
+                });
+            }else {
+                stop(false);
+                openCurrent();
+                play();
+                notifyChange(InternalIntents.META_CHANGED);
+            }
         }
     }
 
@@ -2250,6 +2287,7 @@ public class MusicService extends Service {
             stop(false);
             playPos = pos;
             if (getCurrentPlaylist().get(playPos).isGMusicSong){
+                GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
                 GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(playPos).gMusicId, new GetStreamUrlListener() {
                     @Override
                     public void OnCompleted(int status, String streamUrl) {
@@ -2495,10 +2533,30 @@ public class MusicService extends Service {
     public void setQueuePosition(int pos) {
         synchronized (this) {
             stop(false);
-            playPos = pos;
-            openCurrentAndNext();
-            play();
-            notifyChange(InternalIntents.META_CHANGED);
+
+            if (getCurrentPlaylist().get(pos).isGMusicSong){
+                MediaPlayerHandler.settingQueue = true;
+                GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
+                GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(pos).gMusicId, new GetStreamUrlListener() {
+                    @Override
+                    public void OnCompleted(int status, String streamUrl) {
+                        if (status == com.tysovsky.gmusic.Status.SUCCESS){
+                            playPos = pos;
+                            MediaPlayerHandler.settingQueue = false;
+                            getCurrentPlaylist().get(playPos).path = streamUrl;
+                            openCurrentAndNext();
+                            play();
+                            notifyChange(InternalIntents.META_CHANGED);
+                        }
+
+                    }
+                });
+            }else {
+                playPos = pos;
+                openCurrentAndNext();
+                play();
+                notifyChange(InternalIntents.META_CHANGED);
+            }
         }
     }
 

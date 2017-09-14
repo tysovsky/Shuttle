@@ -47,7 +47,7 @@
             android:value="com.simplecity.amp_library.SearchActivity"/>
         <meta-data
             android:name="com.crashlytics.ApiKey"
-            android:value="${CRASHLYTICS_API_KEY}"/>
+            android:value="8db4b876502056ee6521aaa31559d69ae4e9850b"/>
 
         <activity
             android:name=".ui.activities.MainActivity"
