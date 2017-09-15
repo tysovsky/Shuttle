@@ -238,5 +238,12 @@ public class UpNextView extends LinearLayout {
                 seekBar.setProgress(progress);
             }
         }
+
+        @Override
+        public void setBufferProgress(int progress) {
+            if (!isSeeking && seekBar != null) {
+                seekBar.setSecondaryProgress(progress);
+            }
+        }
     };
 }

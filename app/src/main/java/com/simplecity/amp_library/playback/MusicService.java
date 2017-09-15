@@ -1631,6 +1631,8 @@ public class MusicService extends Service {
             boolean shutdown = false;
 
             currentSong = getCurrentPlaylist().get(playPos);
+            if (currentSong.isGMusicSong && currentSong.path.isEmpty())
+                currentSong.path = GMusicClient.getInstance().getStreamingUrl(currentSong.gMusicId);
 
 
                 while (true) {
@@ -1650,7 +1652,6 @@ public class MusicService extends Service {
                         }
                         playPos = pos;
                         stop(false);
-                        playPos = pos;
 
                         currentSong = getCurrentPlaylist().get(playPos);
 
@@ -2214,6 +2215,8 @@ public class MusicService extends Service {
             }
             if (getCurrentPlaylist().get(playPos).isGMusicSong){
                 GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
+                currentSong = getCurrentPlaylist().get(playPos);
+                notifyChange(InternalIntents.META_CHANGED);
                 GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(playPos).gMusicId, new GetStreamUrlListener() {
                     @Override
                     public void OnCompleted(int status, String streamUrl) {
@@ -2222,7 +2225,6 @@ public class MusicService extends Service {
                             stop(false);
                             openCurrent();
                             play();
-                            notifyChange(InternalIntents.META_CHANGED);
                         }
 
                     }
@@ -2285,9 +2287,10 @@ public class MusicService extends Service {
             playPos = pos;
             saveBookmarkIfNeeded();
             stop(false);
-            playPos = pos;
             if (getCurrentPlaylist().get(playPos).isGMusicSong){
                 GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
+                currentSong = getCurrentPlaylist().get(playPos);
+                notifyChange(InternalIntents.META_CHANGED);
                 GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(playPos).gMusicId, new GetStreamUrlListener() {
                     @Override
                     public void OnCompleted(int status, String streamUrl) {
@@ -2295,7 +2298,6 @@ public class MusicService extends Service {
                             getCurrentPlaylist().get(playPos).path = streamUrl;
                             openCurrentAndNext();
                             play();
-                            notifyChange(InternalIntents.META_CHANGED);
                         }
 
                     }
@@ -2534,22 +2536,21 @@ public class MusicService extends Service {
         synchronized (this) {
             stop(false);
 
+
             if (getCurrentPlaylist().get(pos).isGMusicSong){
                 MediaPlayerHandler.settingQueue = true;
+                playPos = pos;
+                currentSong = getCurrentPlaylist().get(playPos);
+                notifyChange(InternalIntents.META_CHANGED);
                 GMusicClient.cancelRequests(RequestManager.GET_STREAM_URL_TAG);
-                GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(pos).gMusicId, new GetStreamUrlListener() {
-                    @Override
-                    public void OnCompleted(int status, String streamUrl) {
-                        if (status == com.tysovsky.gmusic.Status.SUCCESS){
-                            playPos = pos;
-                            MediaPlayerHandler.settingQueue = false;
-                            getCurrentPlaylist().get(playPos).path = streamUrl;
-                            openCurrentAndNext();
-                            play();
-                            notifyChange(InternalIntents.META_CHANGED);
-                        }
-
+                GMusicClient.getInstance().getStreamingUrlAsync(getCurrentPlaylist().get(pos).gMusicId, (status, streamUrl) -> {
+                    if (status == com.tysovsky.gmusic.Status.SUCCESS){
+                        MediaPlayerHandler.settingQueue = false;
+                        getCurrentPlaylist().get(playPos).path = streamUrl;
+                        openCurrentAndNext();
+                        play();
                     }
+
                 });
             }else {
                 playPos = pos;

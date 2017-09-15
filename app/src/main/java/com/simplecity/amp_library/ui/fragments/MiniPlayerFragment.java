@@ -222,6 +222,10 @@ public class MiniPlayerFragment extends BaseFragment {
             progressBar.setProgress(progress);
         }
 
+        @Override
+        public void setBufferProgress(int progress) {
+            progressBar.setSecondaryProgress(progress);
+        }
 
         @Override
         public void playbackChanged(boolean isPlaying) {

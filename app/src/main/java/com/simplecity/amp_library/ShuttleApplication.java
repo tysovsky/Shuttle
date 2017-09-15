@@ -207,20 +207,24 @@ public class ShuttleApplication extends Application {
 
         GMusicClient client = new GMusicClient(this);
         if (!client.isAuthenticated()){
-            client.loginAsync("username@gmail.com", "password", Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID), new LoginListener() {
-                @Override
-                public void OnComplete(int status) {
+            client.loginAsync("tysovsky@gmail.com", "\\EgRQCxzAx#a-R#TnAnr", Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID), status -> {
+                if (status == Status.SUCCESS) {
                     Log.d(TAG, "Login status: " + status);
+                    client.getAllSongsAsync(new GetAllSongsListener() {
+                        @Override
+                        public void OnCompleted(int status, List<GMusicSong> songs) {
+                            if (status == Status.SUCCESS) {
+                                Log.d(TAG, songs.size() + " songs retrieved");
+                            }
+                        }
+                    });
                 }
             });
         }
         else {
-            client.getAllSongsAsync(new GetAllSongsListener() {
-                @Override
-                public void OnCompleted(int status, List<GMusicSong> songs) {
-                    if (status == Status.SUCCESS){
-                        Log.d(TAG, songs.size() + " songs retrieved");
-                    }
+            client.getAllSongsAsync((status, songs) -> {
+                if (status == Status.SUCCESS){
+                    Log.d(TAG, songs.size() + " songs retrieved");
                 }
             });
         }

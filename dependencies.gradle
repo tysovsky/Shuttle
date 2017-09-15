@@ -198,7 +198,7 @@ ext.libs = [
         // RxJava - https://git.io/rxjava (ReactiveX)
         rxJava                        : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
         // RX Image Picker - https://git.io/vix5H (MLSDev )
-//        rxImagePicker                 : "com.mlsdev.rximagepicker:library:$versions.rxImagePicker",
+        //rxImagePicker                 : "com.mlsdev.rximagepicker:library:$versions.rxImagePicker",
         rxImagePicker                 : "com.github.timusus:RxImagePicker:permission-check-fix-SNAPSHOT",
         // RX Relay - https://github.com/JakeWharton/RxRelay
         rxRelay                       : "com.jakewharton.rxrelay2:rxrelay:$versions.rxRelay",
@@ -226,5 +226,8 @@ ext.libs = [
         // Robolectric - https://github.com/robolectric/robolectric
         robolectric                   : "org.robolectric:robolectric:$versions.robolectric",
         // AssertJ - http://joel-costigliola.github.io/assertj/
-        assertj                       : "org.assertj:assertj-core:$versions.assertj"
+        assertj                       : "org.assertj:assertj-core:$versions.assertj",
+
+        //Simmetrics
+        simmetrics                    : 'com.github.mpkorstanje:simmetrics-core:4.1.1'
 ]

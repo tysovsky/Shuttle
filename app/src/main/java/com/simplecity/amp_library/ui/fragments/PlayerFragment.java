@@ -280,6 +280,13 @@ public class PlayerFragment extends BaseFragment implements
     }
 
     @Override
+    public void setBufferProgress(int progress) {
+        if (!isSeeking && seekBar != null) {
+            seekBar.setSecondaryProgress(progress+30);
+        }
+    }
+
+    @Override
     public void currentTimeVisibilityChanged(boolean visible) {
         if (currentTime != null) {
             currentTime.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
