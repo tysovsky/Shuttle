@@ -301,6 +301,10 @@ public class QueueFragment extends BaseFragment implements
 
     private PlayerViewAdapter playerViewAdapter = new PlayerViewAdapter() {
         @Override
+        public void setBufferProgress(int progress) {
+        }
+
+        @Override
         public void trackInfoChanged(@Nullable Song song) {
             if (song != null) {
                 lineOne.setText(song.name);

@@ -12,6 +12,8 @@ public interface PlayerView {
 
     void setSeekProgress(int progress);
 
+    void setBufferProgress(int progress);
+
     void currentTimeVisibilityChanged(boolean visible);
 
     void currentTimeChanged(long seconds);

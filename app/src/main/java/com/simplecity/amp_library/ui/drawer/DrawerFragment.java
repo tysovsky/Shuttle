@@ -274,6 +274,11 @@ public class DrawerFragment extends BaseFragment implements
 
     PlayerViewAdapter playerViewAdapter = new PlayerViewAdapter() {
         @Override
+        public void setBufferProgress(int progress) {
+
+        }
+
+        @Override
         public void trackInfoChanged(@Nullable Song song) {
 
             if (song == null) {
